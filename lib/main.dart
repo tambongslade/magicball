@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,7 +10,7 @@ void main() {
           title: Text(
             "Ask Me Anything",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 20,
             ),
           ),
           backgroundColor: Colors.blue.shade900,
@@ -27,8 +29,28 @@ class Magic extends StatefulWidget {
 }
 
 class _MagicState extends State<Magic> {
+  int choice = 1;
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      color: Color.fromARGB(255, 16, 39, 88),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Center(
+            child: TextButton(
+              onPressed: () {
+                setState(() {
+                  choice = Random().nextInt(5) + 1;
+                });
+              },
+              child: Image.asset(
+                'images/ball$choice.png',
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
